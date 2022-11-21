@@ -2,8 +2,17 @@ body {
     background-color: red;
 }
 h1 {
-    text-align: center;
+    text-align: center;margin-left: 300px; margin-right: 300px;
+    font-family: 'Times New Roman', Times, serif;color: ghostwhite;
 }
 p {
-    padding-top: 32px; padding-bottom: 32px;
+    padding-top: 16px; padding-bottom: 16px; margin-right: 300px; 
+    margin-left: 300px; font-family: 'Times New Roman', Times, serif;
+    color: ghostwhite;
+}
+label {
+    color: ghostwhite; text-align: center; padding-left: 300px;padding-right: 300px;margin-top: 30px;
+}
+select {
+    margin-left: 300px;margin-right: 300px;margin-top: 30px;
 }
