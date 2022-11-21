@@ -16,3 +16,6 @@ label {
 select {
     margin-left: 300px;margin-right: 300px;margin-top: 30px;
 }
+button {
+    margin-left:300px; margin-right:300px;
+}

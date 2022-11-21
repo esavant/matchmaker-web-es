@@ -2,7 +2,7 @@
 <html lang = "en">
     <head>
         <title>Eddie Savant's Matchmaker</title>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
@@ -11,11 +11,12 @@
         <p>
             
             Welcome to Eddie Savant's Matchmaker Application. This program will evaluate
-            how compatibe you and I would be as romantic partners. Answer all questions carefully
+            how compatible you and I would be as romantic partners. Answer all questions carefully
             and honestly, but beware...bad responses may be met with harsh criticism. Let's Begin...
             
         </p>
         <p>*******************************************************************************************************</p>
+        <br>
         <label>Humans are born and bred omnivores, vegan and carnivore diets are pure delusion<label></br>
             <select id="q1">
                 <option value="5">strongly agree </option>
@@ -25,7 +26,8 @@
                 <option value="1">strongly disagree</option>
             </select>
             <br>
-        <label>The Breaking Bad/Better Call Saul franchise is an cinematic masterpiece</label>
+        <br>
+            <label>The Breaking Bad/Better Call Saul franchise is an cinematic masterpiece</label>
             <select id="q2">
                 <option value="5">strongly agree </option>
                 <option value="4">agree</option>
@@ -34,6 +36,7 @@
                 <option value="1">strongly disagree</option>
             </select>
             <br>
+        <br>
         <label>NY thin crust is better than deep dish</label>
             <select id="q3">
                 <option value="5">strongly agree </option>
@@ -43,6 +46,7 @@
                 <option value="1">strongly disagree</option>
             </select>
             <br>
+        <br>
         <label>Fishing is one of the best ways to decompress after a hard week</label>
             <select id="q4">
                 <option value="5">strongly agree </option>
@@ -52,6 +56,7 @@
                 <option value="1">strongly disagree</option>
             </select>
             <br>
+        <br>
         <label>Heavy metal rocks. (pun intended)</label>
             <select id="q5">
                 <option value="5">strongly agree </option>
@@ -60,11 +65,72 @@
                 <option value="2">disagree</option>
                 <option value="1">strongly disagree</option>
             </select>
-            <br>
-
+            <br><br><br><br>
+            <button onclick="calculateCompatibility()">Calculate Compatibility Score</button>
+            <p id="compatibility"></p>
+            <p id="Message"></p>
 <script>
     console.log("starting matchmaker...")
     
+    function calculateCompatibility(){
+        console.log("calculateScore()");
+       
+
+        const Desired_Response = [
+            5,
+            5,
+            1,
+            4,
+            5,
+        ]
+
+        const MAX_SCORE = 25;
+        
+        let question1Response = document.getElementById("q1").selectedOptions[0].value;
+        let question2Response = document.getElementById("q2").selectedOptions[0].value;
+        let question3Response = document.getElementById("q3").selectedOptions[0].value;
+        let question4Response = document.getElementById("q4").selectedOptions[0].value;
+        let question5Response = document.getElementById("q5").selectedOptions[0].value;
+        
+        let question1Compatibility = 5 - Math.abs(question1Response - Desired_Response[0]);
+        let question2Compatibility = 5 - Math.abs(question2Response - Desired_Response[1]);
+        let question3Compatibility = 5 - Math.abs(question3Response - Desired_Response[2]);
+        let question4Compatibility = 5 - Math.abs(question4Response - Desired_Response[3]);
+        let question5Compatibility = 5 - Math.abs(question5Response - Desired_Response[4]);
+        
+        console.log("c1=" + question1Compatibility);
+        console.log("c2=" + question2Compatibility);
+        console.log("c3=" + question3Compatibility);
+        console.log("c4=" + question4Compatibility);
+        console.log("c5=" + question5Compatibility);
+
+        let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility +
+        question4Compatibility + question5Compatibility
+
+        totalCompatibility *= 100/MAX_SCORE;
+        totalCompatibility = Math.round(totalCompatibility);
+        console.log("totalCompatibility=" + totalCompatibility);
+
+        document.getElementById("compatibility").innerHTML = "Your Compatibility Score is..." + totalCompatibility + "%";
+
+    if (totalCompatibility >= 80) {
+        console.log("Dinner Date at 6?")
+        document.getElementById("Message").innerHTML = "Dinner Date at 6?"
+    }
+        
+    else if (totalCompatibility >= 60) {
+        console.log("Ehh, I'll see you around maybe")
+        document.getElementById("Message").innerHTML = "Ehh, I'll see you around maybe"
+    }
+        
+    else if (totalCompatibility < 60) {
+        console.log("Yea, thanks but no thanks. I'm boutta head out.")
+        document.getElementById("Message").innerHTML = "Yea, thanks but no thanks. I'm boutta head out."
+    }
+
+    }
+    
+        
 </script>  
     </body>
 </html>
